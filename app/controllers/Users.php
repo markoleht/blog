@@ -9,7 +9,7 @@ class Users extends Controller
      */
     public function __construct()
     {
-        $usersModel = $this->model('User');
+        $this->userModel = $this->model('User');
     }
 
     public function register(){
@@ -35,16 +35,20 @@ class Users extends Controller
                 $data['email_err'] = 'Please enter the valid email';
             }
 
+            else if($this->userModel->findUserByEmail($data['email'])){
+                $data ['email_err'] = 'email is already taken';
+            }
+
             if(empty($data['password'])){
                 $data['password_err'] = 'Please enter the password';
-            } else if(strlen($data['password']) < PASSWORD_LEN) {
-                $data['password_err'] = 'Password must consist at least from '.PASSWORD_LEN.' characters';
+            } else if(strlen($data['password']) < 6) {
+                $data['password_err'] = 'Password must consist at least from 6 characters';
             }
 
             if(empty($data['confirm_password'])){
                 $data['confirm_password_err'] = 'Please enter the confirm password';
-            } else if(strlen($data['confirm_password']) < PASSWORD_LEN) {
-                $data['confirm_password_err'] = 'Password must consist at least from '.PASSWORD_LEN.' characters';
+            } else if(strlen($data['confirm_password']) < 6) {
+                $data['confirm_password_err'] = 'Password must consist at least from 6 characters';
             } else if($data['password'] !== $data['confirm_password']){
                 $data['confirm_password_err'] = 'Passwords do not match';
             }
