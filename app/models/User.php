@@ -26,6 +26,26 @@ class User
             return false;
         }
     }
+
+
+
+
+    public function rehister($data)
+    {
+        $this->db->query('INSERT INTO users (name, email, password VALUES :name, :email, :password)');
+        $this->db->bind(':name', $name);
+        $this->db->bind(':email', $email);
+        $this->db->bind(':password', $password);
+
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
 
 
