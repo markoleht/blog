@@ -4,8 +4,8 @@
 class Controller
 {
   // load model
-  public function model($model)
-  {require_once '../app/models/' . $model . '.php';
+  public function model($model){
+    require_once '../app/models/'.$model.'.php';
     return new $model();
   }
   // load view
@@ -13,9 +13,7 @@ class Controller
     if(file_exists('../app/views/'.$view.'.php')){
       require_once '../app/views/'.$view.'.php';
     } else {
-      die('View '.$view.' does not exists<br>');
+      die('View does not exists');
     }
   }
 }
-
-
