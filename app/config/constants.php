@@ -8,7 +8,7 @@ define('URLROOT', 'http://'. $_SERVER['HTTP_HOST']. '/' .PROJECT_NAME);
 
 // database config
 define('DB_HOST', 'localhost');
-define('DB_USER', 'marko');
+define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', PROJECT_NAME);
 
