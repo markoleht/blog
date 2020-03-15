@@ -12,7 +12,7 @@ class Pages extends Controller
   }
 
   public function index(){
-    $data = array('title' => 'Pages');
+    $data = array('title' => 'Welcome');
     $this->view('pages/index', $data);
   }
 }
